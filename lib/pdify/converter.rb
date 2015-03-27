@@ -12,6 +12,7 @@ module Pdify
     def convert!
       match_path = File.join src, "**", "*.{png,jpg,jpeg}"
       files = Dir.glob match_path
+      files.sort_by! { |f| f.sub(/\[.*?\]/, '') }
       make_pdf files
     end
 
